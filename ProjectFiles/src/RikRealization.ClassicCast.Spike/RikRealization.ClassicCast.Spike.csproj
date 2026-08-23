@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>RikRealization.ClassicCast.Spike</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RikRealization.ClassicCast.Protocol\RikRealization.ClassicCast.Protocol.csproj" />
+    <ProjectReference Include="..\RikRealization.ClassicCast.Media\RikRealization.ClassicCast.Media.csproj" />
+  </ItemGroup>
+</Project>

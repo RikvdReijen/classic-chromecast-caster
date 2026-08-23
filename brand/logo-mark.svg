@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-label="Classic Chromecast caster">
+  <title>Classic Chromecast caster</title>
+  <!--
+    The classic Chromecast puck carried a monochrome, segmented Chrome-style mark.
+    Two segments are kept in heritage slate. The third is dissolved into the
+    casting wave: three concentric arcs sharing the disc's own centre, so the
+    hub doubles as the dot of the cast glyph. Brand blue #27adef.
+  -->
+  <defs>
+    <radialGradient id="ccc-wave" cx="128" cy="128" r="110" gradientUnits="userSpaceOnUse">
+      <stop offset="0.24" stop-color="#0f6fb6"/>
+      <stop offset="0.62" stop-color="#27adef"/>
+      <stop offset="1"    stop-color="#5ecdfa"/>
+    </radialGradient>
+    <linearGradient id="ccc-hub" x1="104" y1="102" x2="152" y2="154" gradientUnits="userSpaceOnUse">
+      <stop offset="0"   stop-color="#4cc3f5"/>
+      <stop offset="0.5" stop-color="#27adef"/>
+      <stop offset="1"   stop-color="#1789c9"/>
+    </linearGradient>
+    <linearGradient id="ccc-slate" x1="128" y1="20" x2="128" y2="236" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7d8896"/>
+      <stop offset="1" stop-color="#59636f"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Heritage segments: lower and upper-left -->
+  <path fill="url(#ccc-slate)"
+        d="M216.47,189.95 A108,108 0 0 1 39.53,189.95 L91.96,153.24 A44,44 0 0 0 164.04,153.24 Z"/>
+  <path fill="url(#ccc-slate)"
+        d="M30.12,173.64 A108,108 0 0 1 118.59,20.41 L124.17,84.17 A44,44 0 0 0 88.12,146.60 Z"/>
+
+  <!-- Third segment, morphed into the casting wave -->
+  <g fill="none" stroke="url(#ccc-wave)" stroke-width="16" stroke-linecap="round">
+    <path d="M132.53,76.20  A52,52   0 0 1 175.13,149.98"/>
+    <path d="M134.62,52.29  A76,76   0 0 1 196.88,160.12"/>
+    <path d="M136.72,28.38  A100,100 0 0 1 218.63,170.26"/>
+  </g>
+
+  <!-- Hub: the emitter, and the dot of the cast glyph -->
+  <circle cx="128" cy="128" r="30" fill="url(#ccc-hub)"/>
+</svg>

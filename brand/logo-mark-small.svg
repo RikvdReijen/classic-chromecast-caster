@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-label="Classic Chromecast caster">
+  <title>Classic Chromecast caster (small sizes)</title>
+  <!-- 16-32px variant: two heavier arcs and a larger hub, so the wave survives
+       when the three-arc primary mark would blur into a solid wedge. -->
+  <defs>
+    <radialGradient id="ccs-wave" cx="128" cy="128" r="110" gradientUnits="userSpaceOnUse">
+      <stop offset="0.30" stop-color="#0f6fb6"/>
+      <stop offset="0.68" stop-color="#27adef"/>
+      <stop offset="1"    stop-color="#5ecdfa"/>
+    </radialGradient>
+    <linearGradient id="ccs-hub" x1="100" y1="98" x2="156" y2="158" gradientUnits="userSpaceOnUse">
+      <stop offset="0"   stop-color="#4cc3f5"/>
+      <stop offset="0.5" stop-color="#27adef"/>
+      <stop offset="1"   stop-color="#1789c9"/>
+    </linearGradient>
+    <linearGradient id="ccs-slate" x1="128" y1="20" x2="128" y2="236" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7d8896"/>
+      <stop offset="1" stop-color="#59636f"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#ccs-slate)"
+        d="M216.47,189.95 A108,108 0 0 1 39.53,189.95 L88.68,155.53 A48,48 0 0 0 167.32,155.53 Z"/>
+  <path fill="url(#ccs-slate)"
+        d="M30.12,173.64 A108,108 0 0 1 118.59,20.41 L123.82,80.18 A48,48 0 0 0 84.50,148.29 Z"/>
+  <g fill="none" stroke="url(#ccs-wave)" stroke-width="20" stroke-linecap="round">
+    <path d="M133.58,64.24 A64,64 0 0 1 186.00,155.05"/>
+    <path d="M136.54,30.37 A98,98 0 0 1 216.82,169.42"/>
+  </g>
+  <circle cx="128" cy="128" r="34" fill="url(#ccs-hub)"/>
+</svg>

@@ -1,0 +1,79 @@
+Classic Chromecast caster
+Copyright 2026 Rik van der Reijen (Rik Realization)
+http://rikrealization.com/
+
+Licensed under the Apache License, Version 2.0. See LICENSE.
+
+
+TRADEMARKS
+----------
+
+"Chromecast", "Google Cast" and "Google" are trademarks of Google LLC.
+"AirParrot" is a trademark of Squirrels LLC.
+"Windows" and "Microsoft" are trademarks of Microsoft Corporation.
+
+This project is an independent work. It is not affiliated with, endorsed by,
+sponsored by, or connected to Google LLC, Squirrels LLC or Microsoft
+Corporation. Those names are used only to describe the hardware this software
+talks to, the platform it runs on, and the product it is an alternative to.
+
+
+THIRD-PARTY COMPONENTS
+----------------------
+
+This software depends on the following packages. They are not covered by this
+project's licence and remain under their own terms:
+
+  Vortice.Direct3D11   MIT            Copyright (c) Amer Koleci and Contributors
+  Vortice.DXGI         MIT            Copyright (c) Amer Koleci and Contributors
+  NAudio               MIT            Copyright 2020 Mark Heath
+  Concentus            BSD-3-Clause   Copyright (c) Skype Limited, Xiph.Org
+                                      Foundation, CSIRO, Microsoft Corporation,
+                                      Jean-Marc Valin, Gregory Maxwell,
+                                      Mark Borgerding, Timothy B. Terriberry,
+                                      Logan Stromberg
+  Microsoft.WindowsAppSDK
+                       Microsoft Software License Terms (proprietary)
+                                      (c) Microsoft Corporation
+
+Binary releases are published self-contained and therefore bundle:
+
+  - The .NET runtime, under the MIT License, (c) Microsoft Corporation.
+
+  - Windows App SDK runtime components. These are NOT open source. They are
+    "distributable code" under the Microsoft Software License Terms for the
+    Windows App SDK, which permit redistribution inside an application that
+    adds significant primary functionality. Those terms are reproduced in the
+    binary release archive. Two consequences worth stating plainly: end users
+    of a binary release are bound by Microsoft's terms for those components in
+    addition to the Apache License covering this project's own code, and this
+    project cannot be relicensed under a copyleft licence such as the GPL
+    without dropping the Windows App SDK, because those terms forbid
+    distributing the code in a way that subjects it to a source-disclosure
+    obligation.
+
+FFmpeg is NOT bundled. This software invokes an ffmpeg executable that the
+user supplies and that must be on their PATH. No FFmpeg code is distributed
+here, so this project takes on no FFmpeg licence obligation. Users are
+responsible for the terms of the ffmpeg build they install; note that builds
+including libx264 are covered by the GPL.
+
+
+PROTOCOL IMPLEMENTATION
+-----------------------
+
+The Cast protocol support in this project is an independent implementation,
+written against the publicly observable behaviour of the protocol and using
+Chromium's Open Screen Library as a reference specification for wire formats.
+No source code was copied from Chromium, from any Google Cast SDK, or from any
+other Cast implementation.
+
+
+PATENTS
+-------
+
+The Apache License, Version 2.0 grants patent rights only over contributions
+made to this project. It grants no rights under third-party patents. In
+particular, H.264/AVC is covered by patents administered by Via LA (formerly
+MPEG LA). Determining what licences a given use requires is the responsibility
+of the user or distributor, not of this project.

@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>RikRealization.ClassicCast.Protocol</RootNamespace>
+    <!-- Deliberately dependency-free: the Cast wire formats are hand-rolled so the
+         library restores offline and stays portable off Windows for headless tests. -->
+  </PropertyGroup>
+</Project>

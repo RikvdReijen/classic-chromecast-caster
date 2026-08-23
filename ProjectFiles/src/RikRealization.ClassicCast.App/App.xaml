@@ -1,0 +1,52 @@
+<Application
+    x:Class="RikRealization.ClassicCast.App.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- The brand blue is the one colour that stays put; everything around it
+                 flips with the system theme. Hardcoding the light values left the window
+                 unreadable on a dark desktop. -->
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <SolidColorBrush x:Key="Brand" Color="#27ADEF" />
+                    <SolidColorBrush x:Key="BrandDeep" Color="#1789C9" />
+                    <SolidColorBrush x:Key="Slate" Color="#3D4753" />
+                    <SolidColorBrush x:Key="Muted" Color="#7B8794" />
+                    <SolidColorBrush x:Key="Faint" Color="#A6B0BC" />
+                    <SolidColorBrush x:Key="Hairline" Color="#E4E9EE" />
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Dark">
+                    <!-- Lifted a little: #27ADEF on a near-black background is legible but
+                         sits heavy, and the mark reads better slightly brighter. -->
+                    <SolidColorBrush x:Key="Brand" Color="#43BCF7" />
+                    <SolidColorBrush x:Key="BrandDeep" Color="#27ADEF" />
+                    <SolidColorBrush x:Key="Slate" Color="#D2D9E1" />
+                    <SolidColorBrush x:Key="Muted" Color="#98A3AF" />
+                    <SolidColorBrush x:Key="Faint" Color="#6B7684" />
+                    <SolidColorBrush x:Key="Hairline" Color="#2E353D" />
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+
+            <Style x:Key="SectionHeader" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+                <Setter Property="Foreground" Value="{ThemeResource Muted}" />
+                <Setter Property="Margin" Value="14,10,0,4" />
+            </Style>
+
+            <Style x:Key="IconButton" TargetType="Button">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Padding" Value="7,5" />
+                <Setter Property="FontFamily" Value="Segoe MDL2 Assets" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="Foreground" Value="{ThemeResource Slate}" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

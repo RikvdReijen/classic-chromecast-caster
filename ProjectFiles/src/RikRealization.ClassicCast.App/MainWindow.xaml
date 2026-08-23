@@ -1,0 +1,177 @@
+<Window
+    x:Class="RikRealization.ClassicCast.App.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RikRealization.ClassicCast.App"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid x:Name="Root" Background="{ThemeResource LayerFillColorDefaultBrush}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- ============ title bar ============ -->
+        <Grid x:Name="TitleBar" Grid.Row="0" Height="40" Padding="12,0">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="8">
+                <Image Source="Assets/logo-mark.png" Width="18" Height="18" />
+                <TextBlock Text="Classic Chromecast" FontSize="13" FontWeight="SemiBold"
+                           Foreground="{ThemeResource Slate}" VerticalAlignment="Center" />
+                <TextBlock Text="caster" FontSize="13" FontWeight="SemiBold"
+                           Foreground="{ThemeResource Brand}" VerticalAlignment="Center" />
+            </StackPanel>
+        </Grid>
+
+        <!-- ============ what is casting, and its controls ============ -->
+        <Border Grid.Row="1" BorderBrush="{ThemeResource Hairline}" BorderThickness="0,1,0,1"
+                Padding="14,10,14,6">
+            <StackPanel Spacing="2">
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <Border Width="14" Height="11" CornerRadius="2" BorderThickness="1.5"
+                            VerticalAlignment="Center"
+                            BorderBrush="{ThemeResource Brand}" />
+                    <TextBlock x:Name="ActiveSourceText" Text="No source selected"
+                               FontSize="14" FontWeight="SemiBold"
+                               Foreground="{ThemeResource TextFillColorPrimaryBrush}" />
+                </StackPanel>
+
+                <TextBlock x:Name="ActiveTargetText" Text="Not connected"
+                           FontSize="12" Foreground="{ThemeResource Muted}" Margin="22,0,0,0" />
+
+                <Grid Margin="0,8,0,0">
+                    <StackPanel Orientation="Horizontal" Spacing="2">
+                        <Button x:Name="CastButton" AutomationProperties.AutomationId="CastButton"
+                                Style="{ThemeResource IconButton}"
+                                Content="&#xE768;" ToolTipService.ToolTip="Start casting"
+                                Click="OnCastClicked" Foreground="{ThemeResource Brand}" />
+                        <Button x:Name="StopButton" AutomationProperties.AutomationId="StopButton"
+                                Style="{ThemeResource IconButton}"
+                                Content="&#xE71A;" ToolTipService.ToolTip="Stop casting"
+                                Click="OnStopClicked" IsEnabled="False" />
+                        <TextBlock Text="&#xE767;" FontFamily="Segoe MDL2 Assets" FontSize="14"
+                                   Foreground="{ThemeResource Slate}" VerticalAlignment="Center"
+                                   Margin="6,0,2,0" />
+                        <Slider x:Name="VolumeSlider" Width="96" Minimum="0" Maximum="100" Value="80"
+                                VerticalAlignment="Center" IsThumbToolTipEnabled="False" />
+                    </StackPanel>
+
+                    <TextBlock x:Name="StatsText" HorizontalAlignment="Right" VerticalAlignment="Center"
+                               FontSize="11" Foreground="{ThemeResource Muted}" Text="" />
+                </Grid>
+            </StackPanel>
+        </Border>
+
+        <!-- ============ sources and devices ============ -->
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <TextBlock Text="From" Style="{ThemeResource SectionHeader}" />
+
+                <ListView x:Name="SourceList" SelectionMode="Single"
+                          SelectionChanged="OnSourceSelectionChanged"
+                          Padding="0" Margin="0">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="MinHeight" Value="34" />
+                            <Setter Property="Padding" Value="10,0" />
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="local:SourceItem">
+                            <Grid ColumnSpacing="9">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="16" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{x:Bind Glyph}"
+                                           FontFamily="Segoe MDL2 Assets" FontSize="13"
+                                           Foreground="{ThemeResource Muted}" VerticalAlignment="Center" />
+                                <TextBlock Grid.Column="1" Text="{x:Bind Label}" FontSize="13"
+                                           VerticalAlignment="Center" TextTrimming="CharacterEllipsis" />
+                                <TextBlock Grid.Column="2" Text="{x:Bind Trailing}"
+                                           FontSize="10" Foreground="{x:Bind TrailingBrush}"
+                                           VerticalAlignment="Center" />
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Grid Margin="0,6,0,0">
+                    <TextBlock Text="To" Style="{ThemeResource SectionHeader}" />
+                    <Button x:Name="RefreshButton" Style="{ThemeResource IconButton}"
+                            Content="&#xE72C;" HorizontalAlignment="Right" Margin="0,4,8,0"
+                            ToolTipService.ToolTip="Search again" Click="OnRefreshClicked" />
+                </Grid>
+
+                <Grid Margin="14,2,12,6" ColumnSpacing="6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0" x:Name="ManualAddressBox" PlaceholderText="Address or name"
+                             FontSize="12" Height="30" />
+                    <Button Grid.Column="1" Style="{ThemeResource IconButton}" Content="&#xE72A;"
+                            ToolTipService.ToolTip="Connect to this address"
+                            Click="OnManualConnectClicked" />
+                </Grid>
+
+                <ListView x:Name="DeviceList" SelectionMode="Single"
+                          SelectionChanged="OnDeviceSelectionChanged">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="MinHeight" Value="38" />
+                            <Setter Property="Padding" Value="10,0" />
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="local:DeviceItem">
+                            <Grid ColumnSpacing="9">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="16" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="&#xEC15;"
+                                           FontFamily="Segoe MDL2 Assets" FontSize="14"
+                                           Foreground="{x:Bind AccentColor}" VerticalAlignment="Center" />
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                    <TextBlock Text="{x:Bind Name}" FontSize="13"
+                                               TextTrimming="CharacterEllipsis" />
+                                    <TextBlock Text="{x:Bind Detail}" FontSize="11"
+                                               Foreground="{ThemeResource Muted}" TextTrimming="CharacterEllipsis" />
+                                </StackPanel>
+                                <TextBlock Grid.Column="2" Text="{x:Bind StatusGlyph}"
+                                           FontFamily="Segoe MDL2 Assets" FontSize="12"
+                                           Foreground="{x:Bind AccentColor}" VerticalAlignment="Center" />
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <TextBlock x:Name="DiscoveryHintText" FontSize="11" Foreground="{ThemeResource Muted}"
+                           Margin="14,4,14,10" TextWrapping="Wrap" Text="Searching for devices..." />
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- ============ status bar ============ -->
+        <Border Grid.Row="3" BorderBrush="{ThemeResource Hairline}" BorderThickness="0,1,0,0"
+                Padding="12,7">
+            <Grid>
+                <TextBlock x:Name="StatusText" Text="Idle" FontSize="11"
+                           Foreground="{ThemeResource Muted}" VerticalAlignment="Center" />
+                <HyperlinkButton NavigateUri="http://rikrealization.com/" HorizontalAlignment="Right"
+                                 Padding="4,0" FontSize="11">
+                    <TextBlock Text="Rik Realization" FontSize="11"
+                               Foreground="{ThemeResource Brand}" />
+                </HyperlinkButton>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

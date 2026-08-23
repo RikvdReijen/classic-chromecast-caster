@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/RikRealization.ClassicCast.App/RikRealization.ClassicCast.App.csproj" />
+    <Project Path="src/RikRealization.ClassicCast.Media/RikRealization.ClassicCast.Media.csproj" />
+    <Project Path="src/RikRealization.ClassicCast.Protocol/RikRealization.ClassicCast.Protocol.csproj" />
+    <Project Path="src/RikRealization.ClassicCast.Spike/RikRealization.ClassicCast.Spike.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/RikRealization.ClassicCast.Protocol.Tests/RikRealization.ClassicCast.Protocol.Tests.csproj" />
+  </Folder>
+</Solution>

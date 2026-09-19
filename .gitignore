@@ -51,3 +51,7 @@ TestResults/
 # ---------- Generated media fixtures ----------
 # Rebuild with tools/make-test-pattern.sh; not worth versioning a video blob.
 ProjectFiles/assets/*.h264
+
+# Local build output and release archives (published as GitHub Release assets)
+publish/
+*.zip
